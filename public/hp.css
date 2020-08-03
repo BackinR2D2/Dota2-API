@@ -1,0 +1,125 @@
+.radiantWin {
+    color: green;
+}
+
+.direWin {
+    color: red;
+}
+
+h5{
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+form {
+  text-align: center;
+  margin-top: 4%;
+}
+
+.fontSizeMax{
+  font-size: 20px !important;
+}
+
+p{
+  margin-top: 2.5%;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 4vh;
+  text-decoration: underline;
+}
+
+input {
+  outline: none;
+  border: 0;
+  background-color: #DDD;
+  border-bottom: 2px solid black;
+width: 50%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #DDD;
+  }
+  
+.marginTop {
+  margin-top: 2em;
+}
+
+span {
+  color: red;
+}
+
+.center {
+  display: block;
+  text-align: center;
+}
+
+.steamUrl {
+  word-wrap: break-word;
+}
+
+.navbar {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-around;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid #BBBBBB;
+  }
+
+.nav-link {
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #031D44;
+    padding: 20px 0px;
+    margin: 0px 20px;
+    display: inline-block;
+    position: relative;
+    opacity: 0.75;
+  }
+  
+
+.nav-link:hover {
+    opacity: 1;
+  }
+  
+  .nav-link::before {
+    transition: 300ms;
+    height: 5px;
+    content: "";
+    position: absolute;
+    background-color: #031D44;
+  }
+  
+  .nav-link-ltr::before {
+    width: 0%;
+    bottom: 10px;
+  }
+  
+  .nav-link-ltr:hover::before {
+    width: 100%;
+  }
+
+  @media (max-width: 430px){
+    .gameName {
+      display: block;
+    }
+  }
+
+  @media (max-width: 315px){
+    input {
+      width: 60%;
+    }
+  }

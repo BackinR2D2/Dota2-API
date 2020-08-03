@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://seeklogo.com/images/D/dota-2-logo-7804D430C9-seeklogo.com.png" />
+    <link rel="stylesheet" href="hp.css">
+    <title>Search player</title>
+
+</head>
+
+<% if(data != 'undefined' && games != 'undefined'){ %>
+
+<body>
+    <%- include('./partials/navbar') %>
+    <form action="/search-player" method="GET">
+        <input type="text" placeholder="Enter user ID" name="id" required>
+        <button type="submit" class="btn btn-outline-dark">Search</button>
+    </form>
+    <hr />
+    <div class="center">
+        <% if(games === ''){ %>
+        <p><%= data %></p>
+        <% } else {%>
+        <% data.map(el => { %>
+        <h1><%= el.personaname %></h1>
+        <p>User id <%= el.steamid %></p>
+
+        <img src="<%= el.avatarmedium %>" alt="user">
+
+        <a class="steamUrl" href="<%= el.profileurl %>" target="_blank"><%= el.profileurl %></a>
+
+        <% let date = new Date(el.timecreated * 1000) %>
+        <p>Created at: <%= date %></p>
+        <% }) %>
+        <% if(typeof games == 'undefined'){ %>
+        <p>Games are not found</p>
+        <% } else { %>
+        <% games.map(game => { %>
+        <p>
+            <img src=" http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg"
+                alt="game">
+            <span>
+                <a class="gameName" href="https://store.steampowered.com/app/<%= game.appid %>/<%= game.name %>/"
+                    target="_blank"><%= game.name %></a>
+            </span>
+        </p>
+        <p><%= game.playtime_2weeks / 60 %> hours in the last 2 weeks</p>
+        <p><%= game.playtime_forever / 60 %> hours in total since 2009</p>
+        <p><%= game.playtime_windows_forever / 60 %> hours played on Windows </p>
+        <p><%= game.playtime_mac_forever / 60 %> hours played on Mac </p>
+        <p><%= game.playtime_linux_forever / 60 %> hours played on Linux </p>
+        <hr />
+        <% }) %>
+        <% } %>
+        <% } %>
+    </div>
+    <%- include('./partials/scripts') %>
+</body>
+
+<% } else {%>
+<%- include('./partials/navbar') %>
+<h1>Search Player by ID</h1>
+<form action="/search-player" method="GET">
+    <input type="text" placeholder="Enter user ID" name="id">
+    <button type="submit" class="btn btn-outline-dark">Search</button>
+</form>
+<h5 class="marginTop">You can enter the following ids: </h5>
+<h5>https://steamcommunity.com/id/{<span>Personalized Url</span>}</h5>
+<h5>https://steamcommunity.com/profiles/{<span>Steam 64bits ID</span>}</h5>
+<h5>Steam 32bits ID</h5>
+<%- include('./partials/scripts') %>
+<% } %>
+
+</html>
