@@ -46,17 +46,19 @@
 
     <%- include('./partials/scripts') %>
     <script>
+
+
         let count = 0
         const ids = document.querySelector('.ids')
         const gameDetails = document.querySelector('.gameDetails')
         const gameStatus = document.querySelector('.gameStatus')
         '<% if(stats.data.result.radiant_win === true){ %>'
-        var radiantWon = document.createElement('h2')
+        const radiantWon = document.createElement('h2')
         radiantWon.textContent = 'Radiant won'
         radiantWon.classList.add('radiantWin')
         gameStatus.appendChild(radiantWon)
         '<% } else {%>'
-        var direWon = document.createElement('h2')
+        const direWon = document.createElement('h2')
         direWon.textContent = 'Dire won'
         direWon.classList.add('direWin')
         gameStatus.appendChild(direWon)
@@ -76,6 +78,7 @@
         '<% let index = heroUnique.indexOf(data.hero_id) %>'
         heroName.textContent = '<%= heroes[index].localized_name %>'
         '<% } %>'
+
         matchStats.appendChild(heroName)
         var matchInfo = document.createElement('div')
         matchInfo.innerHTML = '<p>Player id <%= data.account_id %></p><p><%= data.kills %> / <%= data.deaths %> / <%= data.assists %></p><p>GPM <%= data.gold_per_min%> / XPM <%= data.xp_per_min %></p><p>CS <%= data.last_hits %> / Denies <%= data.denies %></p><p>Level <%= data.level %></p><p>Hero damage <%= data.hero_damage %></p><p>Tower damage <%= data.tower_damage %></p><p>Gold spent <%= data.gold_spent %></p>'
@@ -84,7 +87,7 @@
         ids.appendChild(matchStats)
         count += 1
         if (count === 5) {
-            matchStats.style.marginBottom = 16 + '%'
+            matchStats.style.marginBottom = 12 + 'em'
         }
         '<% }) %>'
     </script>

@@ -35,10 +35,11 @@
         <a class="steamUrl" href="<%= el.profileurl %>" target="_blank"><%= el.profileurl %></a>
 
         <% let date = new Date(el.timecreated * 1000) %>
+
         <p>Created at: <%= date %></p>
         <% }) %>
         <% if(typeof games == 'undefined'){ %>
-        <p>Games are not found</p>
+        <p>Games can not be found</p>
         <% } else { %>
         <% games.map(game => { %>
         <p>
@@ -49,17 +50,23 @@
                     target="_blank"><%= game.name %></a>
             </span>
         </p>
-        <p><%= game.playtime_2weeks / 60 %> hours in the last 2 weeks</p>
-        <p><%= game.playtime_forever / 60 %> hours in total since 2009</p>
-        <p><%= game.playtime_windows_forever / 60 %> hours played on Windows </p>
-        <p><%= game.playtime_mac_forever / 60 %> hours played on Mac </p>
-        <p><%= game.playtime_linux_forever / 60 %> hours played on Linux </p>
+        <p><%= Math.round(game.playtime_2weeks / 60) %> hours in the last 2 weeks</p>
+        <p><%= Math.round(game.playtime_forever / 60) %> hours in total since 2009</p>
         <hr />
         <% }) %>
         <% } %>
         <% } %>
     </div>
     <%- include('./partials/scripts') %>
+    <script>
+        const playerDate = document.querySelectorAll('p')[1]
+        const pDate = playerDate.innerText
+        if (pDate.includes('Invalid Date')) {
+            playerDate.textContent = 'Date can not be found'
+        } else {
+            playerDate.textContent = pDate.split('GMT')[0]
+        }
+    </script>
 </body>
 
 <% } else {%>
