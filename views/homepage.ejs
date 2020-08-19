@@ -17,14 +17,15 @@
 
 <body>
     <%- include('./partials/navbar') %>
-    <h1>Search match by ID</h1>
-    <div class="ids"></div>
-    <form action="/" method="GET">
-        <input type="text" placeholder="Enter match id" name="id">
-        <button type="submit" class="btn btn-outline-dark">Search</button>
-    </form>
+    <!-- <h1>Search match by ID</h1> -->
+    <h2 class="font-weight-light m-4 text-center">Search Match By ID</h1>
+        <div class="ids"></div>
+        <form action="/" method="GET">
+            <input type="text" placeholder="Enter match id" name="id">
+            <button type="submit" class="btn btn-outline-dark">Search</button>
+        </form>
 
-    <%- include('./partials/scripts') %>
+        <%- include('./partials/scripts') %>
 </body>
 
 <% } else {%>
@@ -43,11 +44,7 @@
     </form>
     <div class="gameDetails"></div>
     <div class="ids"></div>
-
-    <%- include('./partials/scripts') %>
     <script>
-
-
         let count = 0
         const ids = document.querySelector('.ids')
         const gameDetails = document.querySelector('.gameDetails')
@@ -64,16 +61,23 @@
         gameStatus.appendChild(direWon)
         '<%}%>'
 
+        var radiantTeam = document.createElement('h2')
+        radiantTeam.setAttribute('class', 'text-center m-4')
+        radiantTeam.textContent = 'Radiant'
+        radiantTeam.style.color = 'green'
+        ids.appendChild(radiantTeam)
+
         gameStatus.style.textAlign = 'center'
         gameStatus.style.marginBottom = -4 + '%'
         gameStatus.style.marginTop = 2 + '%'
-        gameDetails.innerHTML = '<p>Duration: <%= stats.data.result.duration / 60 %> minutes</p><p>Radiant score: <%= stats.data.result.radiant_score %></p><p>Dire Score: <%= stats.data.result.dire_score %></p><p>First blood at: <%= stats.data.result.first_blood_time / 60 %> minute</p> '
+        gameDetails.innerHTML = '<p>Duration: <%= Math.round(stats.data.result.duration / 60) %> minutes</p><p>Radiant score: <%= stats.data.result.radiant_score %></p><p>Dire Score: <%= stats.data.result.dire_score %></p><p>First blood at: <%= Math.round(stats.data.result.first_blood_time / 60) %> minute</p> '
         gameDetails.style.textAlign = 'center'
         gameDetails.style.marginTop = 4 + '%'
 
         '<% matchData.map(data => { %>'
         var matchStats = document.createElement('div')
         var heroName = document.createElement('h1')
+        heroName.setAttribute('class', 'text-center')
         '<% if (heroUnique.includes(data.hero_id)) { %>'
         '<% let index = heroUnique.indexOf(data.hero_id) %>'
         heroName.textContent = '<%= heroes[index].localized_name %>'
@@ -87,6 +91,11 @@
         ids.appendChild(matchStats)
         count += 1
         if (count === 5) {
+            var direTeam = document.createElement('h2')
+            direTeam.textContent = 'Dire'
+            direTeam.setAttribute('class', 'text-center m-4')
+            direTeam.style.color = 'red'
+            ids.appendChild(direTeam)
             matchStats.style.marginBottom = 12 + 'em'
         }
         '<% }) %>'

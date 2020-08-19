@@ -25,18 +25,18 @@ p{
   margin-top: 2.5%;
 }
 
-h1 {
+/* h1 {
   text-align: center;
   margin-top: 4vh;
   text-decoration: underline;
-}
+} */
 
 input {
   outline: none;
   border: 0;
   background-color: #DDD;
   border-bottom: 2px solid black;
-width: 50%;
+  width: 50%;
 }
 
 body {
@@ -50,7 +50,7 @@ body {
   margin-top: 2em;
 }
 
-span {
+.searching {
   color: red;
 }
 
@@ -122,4 +122,12 @@ span {
     input {
       width: 60%;
     }
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .showElement {
+    display: block !important;
   }
