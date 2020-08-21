@@ -31,6 +31,10 @@ p{
   text-decoration: underline;
 } */
 
+.errorMsg {
+  font-size: 24px;
+}
+
 input {
   outline: none;
   border: 0;

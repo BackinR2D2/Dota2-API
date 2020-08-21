@@ -1,9 +1,10 @@
-const images = document.querySelector('.images')
+const images = document.querySelector('.heroes')
 const herosearch = document.querySelector('.herosearch')
 const getHeroImages = () => {
     fetch('https://api.opendota.com/api/heroStats')
         .then((res) => res.json())
         .then((stats) => {
+            console.log(stats);
             for (let i = 0; i < stats.length; ++i) {
                 var herodata = document.createElement('div')
                 herodata.setAttribute('id', stats[i].localized_name)
@@ -27,10 +28,11 @@ const getHeroImages = () => {
                 if (stats[i].id === 128) {
                     image.src = 'snapfire_icon.png'
                 }
+                images.appendChild(herodata)
             }
         })
         .catch((err) => {
-            console.log(err)
+            window.location.href = '/heroes'
         })
 
 }

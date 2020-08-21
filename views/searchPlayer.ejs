@@ -32,7 +32,7 @@
 
         <img src="<%= el.avatarmedium %>" alt="user">
 
-        <a class="steamUrl" href="<%= el.profileurl %>" target="_blank"><%= el.profileurl %></a>
+        <a class="steamUrl text-decoration-none" href="<%= el.profileurl %>" target="_blank"><%= el.profileurl %></a>
 
         <% let date = new Date(el.timecreated * 1000) %>
 
@@ -47,7 +47,8 @@
             <img src=" http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg"
                 alt="game">
             <span>
-                <a class="gameName" href="https://store.steampowered.com/app/<%= game.appid %>/<%= game.name %>/"
+                <a class="gameName text-decoration-none"
+                    href="https://store.steampowered.com/app/<%= game.appid %>/<%= game.name %>/"
                     target="_blank"><%= game.name %></a>
             </span>
         </p>
@@ -76,7 +77,7 @@
         <button type="submit" class="btn btn-outline-dark">Search</button>
     </form>
     <h5 class="marginTop">You can enter the following ids: </h5>
-    <h5>https://steamcommunity.com/id/{<span class="searching">Personalized Url</span>}</h5>
+    <h5>https://steamcommunity.com/{<span class="searching">id/Personalized Url</span>}</h5>
     <h5>https://steamcommunity.com/profiles/{<span class="searching">Steam 64bits ID</span>}</h5>
     <h5>Steam 32bits ID</h5>
     <% } %>

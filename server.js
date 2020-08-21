@@ -32,10 +32,18 @@ app.get('/', async (req, res) => {
             }
         })
         let matchData = stats.data.result.players
-        const getHeroes = await axios.get(`http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1/?key=${key}&language=en`)
-        res.render('homepage', { matchData, heroes: getHeroes.data.result.heroes, stats })
+        if (typeof matchData === 'undefined') {
+            return res.render('homepage')
+        } else {
+            if (matchData.length !== 10) {
+                return res.redirect('/')
+            } else {
+                const getHeroes = await axios.get(`http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1/?key=${key}&language=en`)
+                return res.render('homepage', { matchData, heroes: getHeroes.data.result.heroes, stats })
+            }
+        }
     } catch (error) {
-        console.log(error);
+        res.render('error')
     }
 })
 
@@ -92,9 +100,13 @@ app.get('/heroes', (req, res) => {
 })
 
 app.get('/heroes/:id', async (req, res) => {
-    const heroid = req.params.id
-    const getHeroId = await axios.get('https://api.opendota.com/api/heroStats')
-    res.render('singleHero', { heroid, herostats: getHeroId.data })
+    try {
+        const heroid = req.params.id
+        const getHeroId = await axios.get('https://api.opendota.com/api/heroStats')
+        res.render('singleHero', { heroid, herostats: getHeroId.data })
+    } catch (error) {
+        res.render('error')
+    }
 })
 
 app.use((req, res) => {
@@ -106,3 +118,4 @@ app.listen(port, () => {
     console.log(`listening on port ${port}`);
 })
 
+// {/* <p>Hero damage <%= data.hero_damage %></p><p>Tower damage <%= data.tower_damage %></p><p>Gold spent <%= data.gold_spent %></p> */}
