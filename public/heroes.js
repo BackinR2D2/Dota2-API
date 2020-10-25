@@ -4,7 +4,6 @@ const getHeroImages = () => {
     fetch('https://api.opendota.com/api/heroStats')
         .then((res) => res.json())
         .then((stats) => {
-            console.log(stats);
             for (let i = 0; i < stats.length; ++i) {
                 var herodata = document.createElement('div')
                 herodata.setAttribute('id', stats[i].localized_name)
@@ -32,6 +31,7 @@ const getHeroImages = () => {
             }
         })
         .catch((err) => {
+            // adding swal error handling
             window.location.href = '/heroes'
         })
 

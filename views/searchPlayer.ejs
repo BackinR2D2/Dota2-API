@@ -44,7 +44,7 @@
         <% games.map(game => { %>
         <hr />
         <p class="font-weight-light">
-            <img src=" http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg"
+            <img src="http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg"
                 alt="game">
             <span>
                 <a class="gameName text-decoration-none"
@@ -52,8 +52,8 @@
                     target="_blank"><%= game.name %></a>
             </span>
         </p>
-        <p class="font-weight-light"><%= Math.round(game.playtime_2weeks / 60) %> hours in the last 2 weeks</p>
-        <p class="font-weight-light"><%= Math.round(game.playtime_forever / 60) %> hours in total</p>
+        <p class="font-weight-light"><%= (game.playtime_2weeks / 60).toFixed(2) %> hours in the last 2 weeks</p>
+        <p class="font-weight-light"><%= (game.playtime_forever / 60).toFixed(2) %> hours in total</p>
         <% }) %>
         <% } %>
         <% } %>

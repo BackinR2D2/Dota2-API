@@ -37,11 +37,11 @@
     <% heroUnique.push(id.id) %>
     <% }) %>
 
-    <div class="gameStatus"></div>
     <form action="/" method="GET">
         <input type="text" placeholder="Enter match id" name="id" required>
         <button type="submit" class="btn btn-outline-dark">Search</button>
     </form>
+    <div class="gameStatus mb-4"></div>
     <div class="gameDetails"></div>
     <div class="ids"></div>
     <script>
@@ -71,7 +71,7 @@
         gameStatus.style.textAlign = 'center'
         gameStatus.style.marginBottom = -4 + '%'
         gameStatus.style.marginTop = 2 + '%'
-        gameDetails.innerHTML = '<p>Duration: <%= Math.round(stats.data.result.duration / 60) %> minutes</p><p>Radiant kills: <span id=radiantScore><%= stats.data.result.radiant_score %></span></p><p>Dire kills: <span id=direScore><%= stats.data.result.dire_score %></span></p><p>First blood at: <%= Math.round(stats.data.result.first_blood_time / 60) %> minute</p> '
+        gameDetails.innerHTML = '<p>Duration: <%= (stats.data.result.duration / 60).toFixed(2) %> minutes</p><p>Radiant kills: <span id=radiantScore><%= stats.data.result.radiant_score %></span></p><p>Dire kills: <span id=direScore><%= stats.data.result.dire_score %></span></p><p>First blood at: <%= (stats.data.result.first_blood_time / 60).toFixed(2) %> minute</p> '
         gameDetails.style.textAlign = 'center'
         gameDetails.style.marginTop = 4 + '%'
 

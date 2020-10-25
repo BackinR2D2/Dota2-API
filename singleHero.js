@@ -12,5 +12,4 @@ switch (attr.innerText) {
 
 const btn = document.querySelector('a')
 btn.style.color = '#f5f5f5'
-console.log(btn);
 btn.style.textDecoration = 'none'
