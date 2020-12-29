@@ -14,73 +14,88 @@
 
 </head>
 
-<% if(data != 'undefined' && games != 'undefined'){ %>
+<% if(data !='undefined' && games !='undefined' ){ %>
 
-<body>
-    <%- include('./partials/navbar') %>
-    <form action="/search-player" method="GET">
-        <input type="text" placeholder="Enter user ID" name="id" required>
-        <button type="submit" class="btn btn-outline-dark">Search</button>
-    </form>
-    <hr />
-    <div class="center">
-        <% if(games === ''){ %>
-        <p><%= data %></p>
-        <% } else {%>
-        <% data.map(el => { %>
-        <h1><%= el.personaname %></h1>
-        <p>User id <%= el.steamid %></p>
+    <body>
+        <%- include('./partials/navbar') %>
+            <form action="/search-player" method="GET">
+                <input type="text" placeholder="Enter user ID" name="id" required>
+                <button type="submit" class="btn btn-outline-dark">Search</button>
+            </form>
+            <hr />
+            <div class="center">
+                <% if(games==='' ){ %>
+                    <p>
+                        <%= data %>
+                    </p>
+                    <% } else {%>
+                        <% data.map(el=> { %>
+                            <h1>
+                                <%= el.personaname %>
+                            </h1>
+                            <p>User ID <%= el.steamid %>
+                            </p>
 
-        <img src="<%= el.avatarmedium %>" alt="user">
+                            <img src="<%= el.avatarmedium %>" alt="user">
 
-        <a class="steamUrl text-decoration-none" href="<%= el.profileurl %>" target="_blank"><%= el.profileurl %></a>
+                            <a class="steamUrl text-decoration-none" href="<%= el.profileurl %>" target="_blank">
+                                <%= el.profileurl %>
+                            </a>
 
-        <% let date = new Date(el.timecreated * 1000) %>
+                            <% let date=new Date(el.timecreated * 1000) %>
 
-        <p>Created at: <%= date %></p>
-        <% }) %>
-        <% if(typeof games == 'undefined'){ %>
-        <p class="font-weight-light">Games can not be found</p>
-        <% } else { %>
-        <% games.map(game => { %>
-        <hr />
-        <p class="font-weight-light">
-            <img src="http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg"
-                alt="game">
-            <span>
-                <a class="gameName text-decoration-none"
-                    href="https://store.steampowered.com/app/<%= game.appid %>/<%= game.name %>/"
-                    target="_blank"><%= game.name %></a>
-            </span>
-        </p>
-        <p class="font-weight-light"><%= (game.playtime_2weeks / 60).toFixed(2) %> hours in the last 2 weeks</p>
-        <p class="font-weight-light"><%= (game.playtime_forever / 60).toFixed(2) %> hours in total</p>
-        <% }) %>
-        <% } %>
-        <% } %>
-    </div>
-    <script>
-        const playerDate = document.querySelectorAll('p')[1]
-        const pDate = playerDate.innerText
-        if (pDate.includes('Invalid Date')) {
-            playerDate.textContent = 'Date can not be found'
-        } else {
-            playerDate.textContent = pDate.split('GMT')[0]
-        }
-    </script>
-</body>
+                                <p>Created at: <%= date %>
+                                </p>
+                                <% }) %>
+                                    <% if(typeof games=='undefined' ){ %>
+                                        <p class="font-weight-light">Games can not be found</p>
+                                        <% } else { %>
+                                            <% games.map(game=> { %>
+                                                <hr />
+                                                <p class="font-weight-light">
+                                                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg"
+                                                        alt="game">
+                                                    <span>
+                                                        <a class="gameName text-decoration-none"
+                                                            href="https://store.steampowered.com/app/<%= game.appid %>/<%= game.name %>/"
+                                                            target="_blank">
+                                                            <%= game.name %>
+                                                        </a>
+                                                    </span>
+                                                </p>
+                                                <p class="font-weight-light">
+                                                    <%= (game.playtime_2weeks / 60).toFixed(2) %> hours in the last
+                                                        2 weeks
+                                                </p>
+                                                <p class="font-weight-light">
+                                                    <%= (game.playtime_forever / 60).toFixed(2) %> hours in total
+                                                </p>
+                                                <% }) %>
+                                                    <% } %>
+                                                        <% } %>
+            </div>
+            <script>
+                const playerDate = document.querySelectorAll('p')[1]
+                const pDate = playerDate.innerText
+                if (pDate.includes('Invalid Date')) {
+                    playerDate.textContent = 'Date can not be found'
+                } else {
+                    playerDate.textContent = pDate.split('GMT')[0]
+                }
+            </script>
+    </body>
 
-<% } else {%>
-<%- include('./partials/navbar') %>
-<h2 class="font-weight-light m-4 text-center">Search Player By ID</h1>
-    <form action="/search-player" method="GET">
-        <input type="text" placeholder="Enter user ID" name="id">
-        <button type="submit" class="btn btn-outline-dark">Search</button>
-    </form>
-    <h5 class="marginTop">You can enter the following ids: </h5>
-    <h5>https://steamcommunity.com/{<span class="searching">id/Personalized Url</span>}</h5>
-    <h5>https://steamcommunity.com/profiles/{<span class="searching">Steam 64bits ID</span>}</h5>
-    <h5>Steam 32bits ID</h5>
-    <% } %>
+    <% } else {%>
+        <%- include('./partials/navbar') %>
+            <h2 class="font-weight-light m-4 text-center">Search Player By ID</h1>
+                <form action="/search-player" method="GET">
+                    <input type="text" placeholder="Enter user ID" name="id">
+                    <button type="submit" class="btn btn-outline-dark">Search</button>
+                </form>
+                <h5 class="marginTop">You can enter the following ids: </h5>
+                <h5>https://steamcommunity.com/{<span class="searching">id/Personalized Url</span>}</h5>
+                <h5>https://steamcommunity.com/profiles/{<span class="searching">Steam 64bits ID</span>}</h5>
+                <h5>Steam 32bits ID</h5>
+                <% } %>
 
 </html>
