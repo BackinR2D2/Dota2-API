@@ -21,6 +21,9 @@ const getHeroImages = () => {
             document.body.appendChild(herodata)
             herodata.style.margin = 4 + 'vh'
             heroname.style.marginLeft = 2 + 'vh'
+            if (hero.id === 123) {
+                image.src = 'Hoodwink_minimap_icon.png'
+            }
             if (hero.id === 126) {
                 image.src = 'void_spirit_icon.png'
             }
@@ -52,6 +55,9 @@ const getHeroImages = () => {
                     document.body.appendChild(herodata)
                     herodata.style.margin = 4 + 'vh'
                     heroname.style.marginLeft = 2 + 'vh'
+                    if (stats[i].id === 123) {
+                        image.src = 'Hoodwink_minimap_icon.png'
+                    }
                     if (stats[i].id === 126) {
                         image.src = 'void_spirit_icon.png'
                     }

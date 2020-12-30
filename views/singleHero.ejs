@@ -13,60 +13,86 @@
 </head>
 
 <body class="text-dark" style="background-color: #DDD">
-    <% herostats.forEach(herostat => { %>
-    <% if(herostat.id === Number(heroid)) { %>
+    <% herostats.forEach(herostat=> { %>
+        <% if(herostat.id===Number(heroid)) { %>
 
-    <div class="text-center">
-        <h1 class="font-weight-light m-4"><%= herostat.localized_name %></h1>
-        <img class="img-thumbnail m-2" src="https://api.opendota.com<%= herostat.img %>"
-            alt="<%= herostat.localized_name %>">
-        <button type="button" class="btn btn-dark d-block mx-auto mb-4">
-            <a href="/heroes">Go to all the heroes</a>
-        </button>
-        <p class="m-2 font-weight-lighter">Primary attribute</p>
-        <p class="font-weight-bold primary_attr"><%= herostat.primary_attr %></p>
-        <p class="m-2 font-weight-lighter">Attack type</p>
-        <p class="font-weight-bold"><%= herostat.attack_type %></p>
-        <p class="m-2 font-weight-lighter">Roles </p>
-        <p class="font-weight-bold"><%= herostat.roles %></p>
-        <p class="m-2 font-weight-lighter">Strenght gain </p>
-        <p class="font-weight-bold"><%= herostat.str_gain %></p>
-        <p class="m-2 font-weight-lighter">Agility gain</p>
-        <p class="font-weight-bold"><%= herostat.agi_gain %></p>
-        <p class="m-2 font-weight-lighter">Intelligence gain</p>
-        <p class="font-weight-bold"><%= herostat.int_gain %></p>
-        <p class="m-2 font-weight-lighter">Attack range</p>
-        <p class="font-weight-bold"><%= herostat.attack_range %></p>
-        <p class="m-2 font-weight-lighter">Movement speed</p>
-        <p class="font-weight-bold"><%= herostat.move_speed %></p>
-        <p class="m-2 font-weight-lighter">Turn rate</p>
-        <p class="font-weight-bold"><%= herostat.turn_rate %></p>
-        <p class="m-2 font-weight-lighter">Number of legs</p>
-        <p class="font-weight-bold"><%= herostat.legs %></p>
-        <p class="m-2 font-weight-lighter">Projectile speed</p>
-        <p class="font-weight-bold"><%= herostat.projectile_speed %></p>
-        <p class="m-2 font-weight-lighter">Attack rate</p>
-        <p class="font-weight-bold"><%= herostat.attack_rate %></p>
-    </div>
-    <% } %>
-    <% }) %>
+            <div class="text-center">
+                <h1 class="font-weight-light m-4">
+                    <%= herostat.localized_name %>
+                </h1>
+                <img class="img-thumbnail m-2" src="https://api.opendota.com<%= herostat.img %>"
+                    alt="<%= herostat.localized_name %>">
+                <button type="button" class="btn btn-dark d-block mx-auto mb-4">
+                    <a href="/heroes">Go to all the heroes</a>
+                </button>
+                <p class="m-2 font-weight-lighter">Primary attribute</p>
+                <p class="font-weight-bold primary_attr">
+                    <%= herostat.primary_attr %>
+                </p>
+                <p class="m-2 font-weight-lighter">Attack type</p>
+                <p class="font-weight-bold">
+                    <%= herostat.attack_type %>
+                </p>
+                <p class="m-2 font-weight-lighter">Roles </p>
+                <p class="font-weight-bold">
+                    <%= herostat.roles %>
+                </p>
+                <p class="m-2 font-weight-lighter">Strenght gain </p>
+                <p class="font-weight-bold">
+                    <%= herostat.str_gain %>
+                </p>
+                <p class="m-2 font-weight-lighter">Agility gain</p>
+                <p class="font-weight-bold">
+                    <%= herostat.agi_gain %>
+                </p>
+                <p class="m-2 font-weight-lighter">Intelligence gain</p>
+                <p class="font-weight-bold">
+                    <%= herostat.int_gain %>
+                </p>
+                <p class="m-2 font-weight-lighter">Attack range</p>
+                <p class="font-weight-bold">
+                    <%= herostat.attack_range %>
+                </p>
+                <p class="m-2 font-weight-lighter">Movement speed</p>
+                <p class="font-weight-bold">
+                    <%= herostat.move_speed %>
+                </p>
+                <p class="m-2 font-weight-lighter">Turn rate</p>
+                <p class="font-weight-bold">
+                    <%= herostat.turn_rate %>
+                </p>
+                <p class="m-2 font-weight-lighter">Number of legs</p>
+                <p class="font-weight-bold">
+                    <%= herostat.legs %>
+                </p>
+                <p class="m-2 font-weight-lighter">Projectile speed</p>
+                <p class="font-weight-bold">
+                    <%= herostat.projectile_speed %>
+                </p>
+                <p class="m-2 font-weight-lighter">Attack rate</p>
+                <p class="font-weight-bold">
+                    <%= herostat.attack_rate %>
+                </p>
+            </div>
+            <% } %>
+                <% }) %>
 
-    <script>
-        const attr = document.querySelector('.primary_attr')
-        switch (attr.innerText) {
-            case 'int':
-                attr.textContent = 'Intelligence'
-                break
-            case 'str':
-                attr.textContent = 'Strength'
-                break
-            case 'agi':
-                attr.textContent = 'Agility'
-        }
-        const btn = document.querySelector('a')
-        btn.style.color = '#f5f5f5'
-        btn.style.textDecoration = 'none'
-    </script>
+                    <script>
+                        const attr = document.querySelector('.primary_attr')
+                        switch (attr.innerText) {
+                            case 'int':
+                                attr.textContent = 'Intelligence'
+                                break
+                            case 'str':
+                                attr.textContent = 'Strength'
+                                break
+                            case 'agi':
+                                attr.textContent = 'Agility'
+                        }
+                        const btn = document.querySelector('a')
+                        btn.style.color = '#f5f5f5'
+                        btn.style.textDecoration = 'none'
+                    </script>
 </body>
 
 </html>

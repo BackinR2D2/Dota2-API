@@ -117,5 +117,3 @@ app.use((req, res) => {
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 })
-
-// {/* <p>Hero damage <%= data.hero_damage %></p><p>Tower damage <%= data.tower_damage %></p><p>Gold spent <%= data.gold_spent %></p> */}
