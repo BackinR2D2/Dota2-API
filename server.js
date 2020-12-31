@@ -4,10 +4,9 @@ const app = express()
 const axios = require('axios')
 const port = process.env.PORT || 8000
 const path = require('path')
-
 const cors = require('cors')
-app.use(cors())
 
+app.use(cors())
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
@@ -65,7 +64,6 @@ app.get('/search-player', async (req, res) => {
                 let bit64id = '765' + (Number(userId) + 61197960265728)
                 const stats = await axios.get(`http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${key}&steamids=${bit64id}`)
                 data = stats.data.response.players
-
                 const recentGames = await axios.get(`http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${key}&steamid=${bit64id}&format=json`)
                 let games = recentGames.data.response.games;
                 if (data.length === 0 && typeof games === 'undefined') {

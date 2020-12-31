@@ -17,7 +17,6 @@
 
     <body>
         <%- include('./partials/navbar') %>
-            <!-- <h1>Search match by ID</h1> -->
             <h2 class="font-weight-light m-4 text-center">Search Match By ID</h1>
                 <div class="ids"></div>
                 <form action="/" method="GET">
@@ -36,7 +35,6 @@
                     <% heroes.map((id)=> { %>
                         <% heroUnique.push(id.id) %>
                             <% }) %>
-
                                 <form action="/" method="GET">
                                     <input type="text" placeholder="Enter match id" name="id" required>
                                     <button type="submit" class="btn btn-outline-dark">Search</button>
