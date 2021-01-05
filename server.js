@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 const key = process.env.KEY
+const API_KEY = process.env.API_KEY
 
 app.get('/', async (req, res) => {
     try {
@@ -23,7 +24,7 @@ app.get('/', async (req, res) => {
             "headers": {
                 "content-type": "application/octet-stream",
                 "x-rapidapi-host": "community-dota-2.p.rapidapi.com",
-                "x-rapidapi-key": "7bfd605112msh3d3fe7658ff8991p169c3ejsnb01e2e78cde2",
+                "x-rapidapi-key": `${API_KEY}`,
                 "useQueryString": true
             }, "params": {
                 "match_id": `${matchId}`,
