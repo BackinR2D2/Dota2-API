@@ -15,16 +15,19 @@
 <body class="text-dark" style="background-color: #DDD">
     <% herostats.forEach(herostat=> { %>
         <% if(herostat.id===Number(heroid)) { %>
-
             <div class="text-center">
                 <h1 class="font-weight-light m-4">
                     <%= herostat.localized_name %>
                 </h1>
-                <img class="img-thumbnail m-2" src="https://api.opendota.com<%= herostat.img %>"
-                    alt="<%= herostat.localized_name %>">
-                <button type="button" class="btn btn-dark d-block mx-auto mb-4">
-                    <a href="/heroes">Go to all the heroes</a>
-                </button>
+                <div>
+                    <img class="img-thumbnail m-2" src="https://api.opendota.com<%= herostat.img %>"
+                        alt="<%= herostat.localized_name %>">
+                </div>
+                <div class="m-4">
+                    <button type="button" class="btn bthBtn btn-dark d-block mx-auto mb-4">
+                        Go to all the heroes
+                    </button>
+                </div>
                 <p class="m-2 font-weight-lighter">Primary attribute</p>
                 <p class="font-weight-bold primary_attr">
                     <%= herostat.primary_attr %>
@@ -79,6 +82,7 @@
 
                     <script>
                         const attr = document.querySelector('.primary_attr')
+                        const bthBtn = document.querySelector('.bthBtn');
                         switch (attr.innerText) {
                             case 'int':
                                 attr.textContent = 'Intelligence'
@@ -89,9 +93,12 @@
                             case 'agi':
                                 attr.textContent = 'Agility'
                         }
-                        const btn = document.querySelector('a')
-                        btn.style.color = '#f5f5f5'
-                        btn.style.textDecoration = 'none'
+                        bthBtn.addEventListener('click', () => {
+                            window.location.href = '/heroes';
+                        })
+                        // const btn = document.querySelector('a')
+                        // btn.style.color = '#f5f5f5'
+                        // btn.style.textDecoration = 'none'
                     </script>
 </body>
 
