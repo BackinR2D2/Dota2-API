@@ -44,8 +44,8 @@ app.get('/', async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        // res.render('error')
-        res.json(error);
+        res.render('homepage')
+        // res.json(error);
     }
 })
 
