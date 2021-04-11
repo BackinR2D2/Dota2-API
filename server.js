@@ -43,7 +43,9 @@ app.get('/', async (req, res) => {
             }
         }
     } catch (error) {
-        res.render('error')
+        console.log(error);
+        // res.render('error')
+        res.json(error);
     }
 })
 
