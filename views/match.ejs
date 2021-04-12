@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://seeklogo.com/images/D/dota-2-logo-7804D430C9-seeklogo.com.png" />
+    <title>Match <%= stats.match_id %>
+    </title>
+    <link rel="stylesheet" href="hp.css">
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+        <div>
+            <% const radiantData=[] %>
+                <% const direData=[] %>
+                    <% for(let i=0; i < 5; i++) { %>
+                        <% radiantData.push(matchDataPlayers[i]) %>
+                            <% } %>
+                                <% for(let i=5; i < matchDataPlayers.length; i++) { %>
+                                    <% direData.push(matchDataPlayers[i]) %>
+                                        <% } %>
+        </div>
+        <div class=" tc">
+            <% let heroFound %>
+                <div class="rcont">
+                    <h1>Radiant team</h1>
+                    <div class="radiantTeam t">
+                        <%radiantData.forEach(player=> {%>
+                            <% heroes.forEach(hero=> { %>
+                                <% if(hero.id===player.hero_id) { %>
+                                    <% heroFound=hero %>
+                                        <% } %>
+                                            <% }) %>
+                                                <div class="card">
+                                                    <img src="https://api.opendota.com<%= heroFound && heroFound.img %>"
+                                                        class="card-img-top"
+                                                        alt="<%= heroFound && heroFound.localized_name %>">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">
+                                                            <%= heroFound.localized_name %>
+                                                        </h4>
+                                                        <p class="card-text">
+                                                            <% if(player.personaname===undefined) { %>
+                                                                <p>-</p>
+                                                                <% } else { %>
+                                                                    <%= player.personaname %>
+                                                                        <% } %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            <% if(player.account_id===null) { %>
+                                                                Account id -
+                                                                <% } else { %>
+                                                                    Account id <%= player.account_id %>
+                                                                        <% } %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Kills <%= player.kills %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Deaths <%= player.deaths %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Assists <%= player.assists%>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Level <%= player.level %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Last Hits <%= player.last_hits %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Denies <%= player.denies %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            GPM <%= player.gold_per_min %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            XPM <%= player.xp_per_min %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            KDA <%= player.kda %>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <%})%>
+                    </div>
+                </div>
+                <div class="dcont">
+                    <h1>Dire team</h1>
+                    <div class="direTeam t">
+                        <%direData.forEach(player=> {%>
+                            <% heroes.forEach(hero=> { %>
+                                <% if(hero.id===player.hero_id) { %>
+                                    <% heroFound=hero %>
+                                        <% } %>
+                                            <% }) %>
+                                                <div class="card">
+                                                    <img src="https://api.opendota.com<%= heroFound && heroFound.img %>"
+                                                        class="card-img-top"
+                                                        alt="<%= heroFound && heroFound.localized_name %>">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">
+                                                            <%= heroFound.localized_name %>
+                                                        </h4>
+                                                        <p class="card-text">
+                                                            <% if(player.personaname===undefined) { %>
+                                                                <p>-</p>
+                                                                <% } else { %>
+                                                                    <%= player.personaname %>
+                                                                        <% } %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            <% if(player.account_id===null) { %>
+                                                                Account id -
+                                                                <% } else { %>
+                                                                    Account id <%= player.account_id %>
+                                                                        <% } %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Kills <%= player.kills %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Deaths <%= player.deaths %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Assists <%= player.assists%>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Level <%= player.level %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Last Hits <%= player.last_hits %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Denies <%= player.denies %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            GPM <%= player.gold_per_min %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            XPM <%= player.xp_per_min %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            KDA <%= player.kda %>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <%})%>
+                    </div>
+                </div>
+        </div>
+</body>
+
+</html>

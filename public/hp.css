@@ -129,3 +129,41 @@ body {
   .showElement {
     display: block !important;
   }
+
+  .tc {
+    text-align: center;
+  }
+
+  .card-text {
+    word-break: break-word;
+  }
+
+  .t {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  /* 792 */
+  @media (max-width: 1080px) {
+    .t {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .card {
+      /* width: 60%; */
+      margin: 0 auto;
+    }
+  }
+  
+  /* @media (max-width: 792px) {
+    .t {
+      grid-template-columns: 1fr;
+    }
+  } */
+
+  .rcont {
+    padding: 24px;
+  }
+
+  .dcont {
+    padding: 16px;
+  }

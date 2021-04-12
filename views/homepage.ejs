@@ -13,118 +13,14 @@
 
 </head>
 
-<% if(typeof matchData=='undefined' ) { %>
-
-    <body>
-        <%- include('./partials/navbar') %>
-            <h2 class="font-weight-light m-4 text-center">Search Match By ID</h1>
-                <div class="ids"></div>
-                <form action="/" method="GET">
-                    <input type="text" placeholder="Enter match id" name="id">
-                    <button type="submit" class="btn btn-outline-dark">Search</button>
-                </form>
-
-                <%- include('./partials/scripts') %>
-    </body>
-
-    <% } else {%>
-
-        <body>
-            <%- include('./partials/navbar') %>
-                <% const heroUnique=[] %>
-                    <% heroes.map((id)=> { %>
-                        <% heroUnique.push(id.id) %>
-                            <% }) %>
-                                <form action="/" method="GET">
-                                    <input type="text" placeholder="Enter match id" name="id" required>
-                                    <button type="submit" class="btn btn-outline-dark">Search</button>
-                                </form>
-                                <div class="gameStatus mb-4"></div>
-                                <div class="gameDetails"></div>
-                                <div class="ids"></div>
-                                <script>
-                                    let count = 0
-                                    const ids = document.querySelector('.ids')
-                                    const gameDetails = document.querySelector('.gameDetails')
-                                    const gameStatus = document.querySelector('.gameStatus')
-                                    '<% if(stats.data.result.radiant_win === true){ %>'
-
-                                    const radiantWon = document.createElement('h2')
-                                    radiantWon.textContent = 'Radiant won'
-                                    radiantWon.classList.add('radiantWin')
-                                    gameStatus.appendChild(radiantWon)
-                                    '<% } else {%>'
-                                    const direWon = document.createElement('h2')
-                                    direWon.textContent = 'Dire won'
-                                    direWon.classList.add('direWin')
-                                    gameStatus.appendChild(direWon)
-                                    '<%}%>'
-
-                                    const radiantTeam = document.createElement('h2')
-                                    radiantTeam.setAttribute('class', 'text-center m-4')
-                                    radiantTeam.textContent = 'Radiant'
-                                    radiantTeam.style.color = 'green'
-                                    ids.appendChild(radiantTeam)
-
-                                    gameStatus.style.textAlign = 'center'
-                                    gameStatus.style.marginBottom = -4 + '%'
-                                    gameStatus.style.marginTop = 2 + '%'
-                                    gameDetails.innerHTML = '<p>Duration: <%= (stats.data.result.duration / 60).toFixed(2) %> minutes</p><p>Radiant kills: <span id=radiantScore><%= stats.data.result.radiant_score %></span></p><p>Dire kills: <span id=direScore><%= stats.data.result.dire_score %></span></p><p>First blood at: <%= (stats.data.result.first_blood_time / 60).toFixed(2) %> minute</p> '
-                                    gameDetails.style.textAlign = 'center'
-                                    gameDetails.style.marginTop = 4 + '%'
-
-                                    const rSum = document.getElementById('radiantScore')
-                                    const dSum = document.getElementById('direScore')
-
-                                    '<% let Score = [] %>'
-                                    '<% let direScore = [] %>'
-                                    '<% let radiantScore = [] %>'
-                                    '<% let matchStats %>'
-                                    '<% let heroName %>'
-                                    '<% let matchInfo %>'
-                                    '<% matchData.map(data => { %>'
-
-                                    matchStats = document.createElement('div')
-                                    heroName = document.createElement('h1')
-                                    heroName.setAttribute('class', 'text-center')
-                                    '<% if (heroUnique.includes(data.hero_id)) { %>'
-                                    '<% const index = heroUnique.indexOf(data.hero_id) %>'
-                                    heroName.textContent = '<%= heroes[index].localized_name %>'
-                                    '<% } %>'
-                                    '<% Score.push(data.kills) %>'
-
-                                    '<% radiantScore = Score.slice(0, 5) %>'
-                                    '<% direScore = Score.slice(5) %>'
-                                    '<% let radiantSum = 0 %>'
-                                    '<% let direSum = 0 %>'
-                                    '<% radiantScore.map(score => { %>'
-                                    '<% radiantSum += score %>'
-                                    '<% }) %>'
-                                    '<% direScore.map(score => { %>'
-                                    '<% direSum += score %>'
-                                    '<% }) %>'
-
-                                    rSum.textContent = '<%= radiantSum %>'
-                                    dSum.textContent = '<%= direSum %>'
-                                    matchStats.appendChild(heroName)
-                                    matchInfo = document.createElement('div')
-                                    matchInfo.innerHTML = '<p>Player id <%= data.account_id %></p><p><%= data.kills %> / <%= data.deaths %> / <%= data.assists %></p><p>GPM <%= data.gold_per_min%> / XPM <%= data.xp_per_min %></p><p>CS <%= data.last_hits %> / Denies <%= data.denies %></p><p>Level <%= data.level %></p>'
-                                    matchInfo.style.textAlign = 'center'
-                                    matchStats.appendChild(matchInfo)
-                                    ids.appendChild(matchStats)
-                                    count += 1
-                                    if (count === 5) {
-
-                                        const direTeam = document.createElement('h2')
-                                        direTeam.textContent = 'Dire'
-                                        direTeam.setAttribute('class', 'text-center m-4')
-                                        direTeam.style.color = 'red'
-                                        ids.appendChild(direTeam)
-                                        matchStats.style.marginBottom = 12 + 'em'
-                                    }
-                                    '<% }) %>'
-                                </script>
-        </body>
-        <% } %>
+<body>
+    <%- include('./partials/navbar') %>
+        <h2 class="font-weight-light m-4 text-center">Search Match By ID</h1>
+            <div class="ids"></div>
+            <form action="/match" method="POST">
+                <input type="text" placeholder="Enter match id" name="id">
+                <button type="submit" class="btn btn-outline-dark">Search</button>
+            </form>
+</body>
 
 </html>
