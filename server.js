@@ -15,37 +15,42 @@ app.use(express.urlencoded({ extended: true }))
 const key = process.env.KEY
 const API_KEY = process.env.API_KEY
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
+    res.render('homepage');
+})
+
+app.post('/match', async (req, res) => {
     try {
-        const matchId = req.query.id
-        const stats = await axios({
-            "method": "GET",
-            "url": "https://community-dota-2.p.rapidapi.com/IDOTA2Match_570/GetMatchDetails/V001/",
-            "headers": {
-                "content-type": "application/octet-stream",
-                "x-rapidapi-host": "community-dota-2.p.rapidapi.com",
-                "x-rapidapi-key": `${API_KEY}`,
-                "useQueryString": true
-            }, "params": {
-                "match_id": `${matchId}`,
-                "key": `${key}`
-            }
-        })
-        let matchData = stats.data.result.players
+        const matchId = req.body.id;
+        // const stats = await axios({
+        //     "method": "GET",
+        //     "url": "https://community-dota-2.p.rapidapi.com/IDOTA2Match_570/GetMatchDetails/V001/",
+        //     "headers": {
+        //         "content-type": "application/octet-stream",
+        //         "x-rapidapi-host": "community-dota-2.p.rapidapi.com",
+        //         "x-rapidapi-key": `${API_KEY}`,
+        //         "useQueryString": true
+        //     }, "params": {
+        //         "match_id": `${matchId}`,
+        //         "key": `${key}`
+        //     }
+        // })
+        const stats = await axios.get(`https://api.opendota.com/api/matches/${matchId}`);
+        const matchData = stats.data.players;
         if (typeof matchData === 'undefined') {
-            return res.render('homepage')
+            return res.render('error');
         } else {
             if (matchData.length !== 10) {
-                return res.redirect('/')
+                return res.redirect('/');
             } else {
-                const getHeroes = await axios.get(`http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1/?key=${key}&language=en`)
-                return res.render('homepage', { matchData, heroes: getHeroes.data.result.heroes, stats })
+                // 'https://api.opendota.com/api/heroStats'
+                // const getHeroes = await axios.get(`http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1/?key=${key}&language=en`)
+                const getHeroes = await axios.get('https://api.opendota.com/api/heroStats');
+                return res.render('match', { matchDataPlayers: matchData, heroes: getHeroes.data, stats: stats.data })
             }
         }
     } catch (error) {
-        console.log(error);
-        res.render('homepage')
-        // res.json(error);
+        res.render('error');
     }
 })
 
