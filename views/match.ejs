@@ -26,9 +26,27 @@
                                         <% } %>
         </div>
         <div class=" tc">
+            <div class="matchInfo">
+                <div class="matchStatus">
+                    <% if(stats.radiant_win===true) { %>
+                        <h2 style="color:green">Radiant won</h2>
+                        <% } else { %>
+                            <h2 style="color:red">Dire won</h2>
+                            <% } %>
+                </div>
+                <p>Radiant score <%= stats.radiant_score %>
+                </p>
+                <p>Dire score <%= stats.dire_score %>
+                </p>
+                <p>Duration <%= new Date(stats.duration * 1000).toISOString().substr(11, 8) %>
+                </p>
+                <p>First blood at <%= new Date(stats.first_blood_time * 1000).toISOString().substr(11, 8) %>
+                </p>
+            </div>
+            <hr>
             <% let heroFound %>
                 <div class="rcont">
-                    <h1>Radiant team</h1>
+                    <h3>Radiant team</h3>
                     <div class="radiantTeam t">
                         <%radiantData.forEach(player=> {%>
                             <% heroes.forEach(hero=> { %>
@@ -77,6 +95,12 @@
                                                             Denies <%= player.denies %>
                                                         </p>
                                                         <p class="card-text">
+                                                            Hero Damage <%= player.hero_damage %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Tower Damage <%= player.tower_damage %>
+                                                        </p>
+                                                        <p class="card-text">
                                                             GPM <%= player.gold_per_min %>
                                                         </p>
                                                         <p class="card-text">
@@ -91,7 +115,7 @@
                     </div>
                 </div>
                 <div class="dcont">
-                    <h1>Dire team</h1>
+                    <h3>Dire team</h3>
                     <div class="direTeam t">
                         <%direData.forEach(player=> {%>
                             <% heroes.forEach(hero=> { %>
@@ -138,6 +162,12 @@
                                                         </p>
                                                         <p class="card-text">
                                                             Denies <%= player.denies %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Hero Damage <%= player.hero_damage %>
+                                                        </p>
+                                                        <p class="card-text">
+                                                            Tower Damage <%= player.tower_damage %>
                                                         </p>
                                                         <p class="card-text">
                                                             GPM <%= player.gold_per_min %>

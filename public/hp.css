@@ -134,6 +134,11 @@ body {
     text-align: center;
   }
 
+  .card {
+    height: 400px;
+    overflow-y: scroll;
+  }
+
   .card-text {
     word-break: break-word;
   }
@@ -144,12 +149,12 @@ body {
     gap: 1rem;
   }
   /* 792 */
-  @media (max-width: 1080px) {
+  @media (max-width: 987px) {
     .t {
       grid-template-columns: repeat(1, 1fr);
     }
     .card {
-      /* width: 60%; */
+      /* width: 50%; */
       margin: 0 auto;
     }
   }
@@ -166,4 +171,8 @@ body {
 
   .dcont {
     padding: 16px;
+  }
+
+  .matchInfo {
+    padding: 18px;
   }
