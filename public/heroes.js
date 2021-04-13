@@ -30,6 +30,9 @@ const getHeroImages = () => {
             if (hero.id === 128) {
                 image.src = 'snapfire_icon.png'
             }
+            if (hero.id === 135) {
+                image.src = 'dawnbreaker_icon.png'
+            }
             images.appendChild(herodata)
         })
         return;
@@ -63,6 +66,9 @@ const getHeroImages = () => {
                     }
                     if (stats[i].id === 128) {
                         image.src = 'snapfire_icon.png'
+                    }
+                    if (hero.id === 135) {
+                        image.src = 'dawnbreaker_icon.png'
                     }
                     images.appendChild(herodata)
                 }

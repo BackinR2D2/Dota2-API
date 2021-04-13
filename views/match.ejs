@@ -55,61 +55,66 @@
                                         <% } %>
                                             <% }) %>
                                                 <div class="card">
-                                                    <img src="https://api.opendota.com<%= heroFound && heroFound.img %>"
-                                                        class="card-img-top"
-                                                        alt="<%= heroFound && heroFound.localized_name %>">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">
-                                                            <%= heroFound.localized_name %>
-                                                        </h4>
-                                                        <p class="card-text">
-                                                            <% if(player.personaname===undefined) { %>
-                                                                <p>-</p>
-                                                                <% } else { %>
-                                                                    <%= player.personaname %>
-                                                                        <% } %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            <% if(player.account_id===null) { %>
-                                                                Account id -
-                                                                <% } else { %>
-                                                                    Account id <%= player.account_id %>
-                                                                        <% } %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Kills <%= player.kills %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Deaths <%= player.deaths %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Assists <%= player.assists%>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Level <%= player.level %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Last Hits <%= player.last_hits %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Denies <%= player.denies %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Hero Damage <%= player.hero_damage %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Tower Damage <%= player.tower_damage %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            GPM <%= player.gold_per_min %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            XPM <%= player.xp_per_min %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            KDA <%= player.kda %>
-                                                        </p>
-                                                    </div>
+                                                    <% if(heroFound.localized_name==='Dawnbreaker' ) { %>
+                                                        <img src="dawnbreaker.png" class="card-img-top"
+                                                            alt="Dawnbreaker">
+                                                        <% } else { %>
+                                                            <img src="https://api.opendota.com<%= heroFound && heroFound.img %>"
+                                                                class="card-img-top"
+                                                                alt="<%= heroFound && heroFound.localized_name %>">
+                                                            <% } %>
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">
+                                                                        <%= heroFound.localized_name %>
+                                                                    </h4>
+                                                                    <p class="card-text">
+                                                                        <% if(player.personaname===undefined) { %>
+                                                                            <p>-</p>
+                                                                            <% } else { %>
+                                                                                <%= player.personaname %>
+                                                                                    <% } %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        <% if(player.account_id===null) { %>
+                                                                            Account id -
+                                                                            <% } else { %>
+                                                                                Account id <%= player.account_id %>
+                                                                                    <% } %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Kills <%= player.kills %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Deaths <%= player.deaths %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Assists <%= player.assists%>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Level <%= player.level %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Last Hits <%= player.last_hits %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Denies <%= player.denies %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Hero Damage <%= player.hero_damage %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Tower Damage <%= player.tower_damage %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        GPM <%= player.gold_per_min %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        XPM <%= player.xp_per_min %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        KDA <%= player.kda %>
+                                                                    </p>
+                                                                </div>
                                                 </div>
                                                 <%})%>
                     </div>
@@ -124,61 +129,66 @@
                                         <% } %>
                                             <% }) %>
                                                 <div class="card">
-                                                    <img src="https://api.opendota.com<%= heroFound && heroFound.img %>"
-                                                        class="card-img-top"
-                                                        alt="<%= heroFound && heroFound.localized_name %>">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">
-                                                            <%= heroFound.localized_name %>
-                                                        </h4>
-                                                        <p class="card-text">
-                                                            <% if(player.personaname===undefined) { %>
-                                                                <p>-</p>
-                                                                <% } else { %>
-                                                                    <%= player.personaname %>
-                                                                        <% } %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            <% if(player.account_id===null) { %>
-                                                                Account id -
-                                                                <% } else { %>
-                                                                    Account id <%= player.account_id %>
-                                                                        <% } %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Kills <%= player.kills %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Deaths <%= player.deaths %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Assists <%= player.assists%>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Level <%= player.level %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Last Hits <%= player.last_hits %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Denies <%= player.denies %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Hero Damage <%= player.hero_damage %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Tower Damage <%= player.tower_damage %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            GPM <%= player.gold_per_min %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            XPM <%= player.xp_per_min %>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            KDA <%= player.kda %>
-                                                        </p>
-                                                    </div>
+                                                    <% if(heroFound.localized_name==='Dawnbreaker' ) { %>
+                                                        <img src="dawnbreaker.png" class="card-img-top"
+                                                            alt="Dawnbreaker">
+                                                        <% } else { %>
+                                                            <img src="https://api.opendota.com<%= heroFound && heroFound.img %>"
+                                                                class="card-img-top"
+                                                                alt="<%= heroFound && heroFound.localized_name %>">
+                                                            <% } %>
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">
+                                                                        <%= heroFound.localized_name %>
+                                                                    </h4>
+                                                                    <p class="card-text">
+                                                                        <% if(player.personaname===undefined) { %>
+                                                                            <p>-</p>
+                                                                            <% } else { %>
+                                                                                <%= player.personaname %>
+                                                                                    <% } %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        <% if(player.account_id===null) { %>
+                                                                            Account id -
+                                                                            <% } else { %>
+                                                                                Account id <%= player.account_id %>
+                                                                                    <% } %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Kills <%= player.kills %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Deaths <%= player.deaths %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Assists <%= player.assists%>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Level <%= player.level %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Last Hits <%= player.last_hits %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Denies <%= player.denies %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Hero Damage <%= player.hero_damage %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        Tower Damage <%= player.tower_damage %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        GPM <%= player.gold_per_min %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        XPM <%= player.xp_per_min %>
+                                                                    </p>
+                                                                    <p class="card-text">
+                                                                        KDA <%= player.kda %>
+                                                                    </p>
+                                                                </div>
                                                 </div>
                                                 <%})%>
                     </div>
