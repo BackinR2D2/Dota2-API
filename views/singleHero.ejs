@@ -9,7 +9,9 @@
     <link rel="shortcut icon" type="image/x-icon"
         href="https://seeklogo.com/images/D/dota-2-logo-7804D430C9-seeklogo.com.png" />
     <link rel="stylesheet" href="hp.css">
-    <title>Single hero</title>
+    <title>
+        <%= herostats[heroid - 1] && herostats[heroid - 1].localized_name %>
+    </title>
 </head>
 
 <body class="text-dark" style="background-color: #DDD">
